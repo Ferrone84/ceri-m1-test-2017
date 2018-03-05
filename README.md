@@ -16,3 +16,5 @@
 ### External
 
 - [JUnit 5 documentation](http://junit.org/junit5/docs/current/user-guide)
+
+export PATH=/home/etudiants/inf/uapv1502017/Téléchargements/apache-maven-3.5.2/bin:$PATH

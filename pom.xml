@@ -1,0 +1,47 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.univavignon</groupId>
+	<artifactId>rodeo</artifactId>
+	<version>1.0.0</version>
+	<name>rodeo</name>
+	<url>https://github.com/Ferrone84/ceri-m1-test-2017</url>
+
+	<developers>
+		<developer>
+			<id>ferrone</id>
+			<name>Nicolas Duret</name>
+			<email>nicolas.duret@alumni.univ-avignon.fr</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<properties>
+				<picUrl>http://www.example.com/jdoe/pic</picUrl>
+			</properties>
+		</developer>
+	</developers>
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>4.0.0</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
