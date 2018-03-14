@@ -1,4 +1,4 @@
-package fr.univavignon.rodeo.api;
+package fr.univavignon.rodeo;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+
+import fr.univavignon.rodeo.api.IAnimal;
 
 public class IAnimalTest {
 	
