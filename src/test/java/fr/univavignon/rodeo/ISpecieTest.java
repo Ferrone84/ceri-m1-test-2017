@@ -21,12 +21,14 @@ public class ISpecieTest {
 	private ISpecie specie;
 	
 	@Before
-	public void init() {
+	public void init() {		
 		animal = mock(IAnimal.class);
 		specie = mock(ISpecie.class);
-		when(specie.getArea()).thenReturn(0);
+
 		LinkedList<IAnimal> mockedList = new LinkedList<IAnimal>();
 		mockedList.add(animal);
+		
+		when(specie.getArea()).thenReturn(0);
 		when(specie.getAnimals()).thenReturn(mockedList);
 	}
 	

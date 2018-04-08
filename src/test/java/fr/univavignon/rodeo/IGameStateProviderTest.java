@@ -22,14 +22,13 @@ public class IGameStateProviderTest {
 	public void init() {
 		gameStateProvider = mock(IGameStateProvider.class);
 		gameState = mock(IGameState.class);
-		gameStateProvider.save(gameState);
-		when(gameStateProvider.get("MySave")).thenReturn(gameState);
 		when(gameStateProvider.get("")).thenReturn(null);
+		when(gameStateProvider.get("MySave")).thenReturn(gameState);
 	}
 	
 	@Test
 	public void testSave() {
-		//TODO comment tester ça ?
+		//TODO comment tester ce truc ?
 		gameStateProvider.save(gameState);
 	}
 	
