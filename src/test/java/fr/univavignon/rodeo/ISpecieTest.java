@@ -20,12 +20,14 @@ public class ISpecieTest {
 	@Mock
 	private ISpecie specie;
 	
+	private LinkedList<IAnimal> mockedList;
+	
 	@Before
 	public void init() {		
 		animal = mock(IAnimal.class);
 		specie = mock(ISpecie.class);
 
-		LinkedList<IAnimal> mockedList = new LinkedList<IAnimal>();
+		mockedList = new LinkedList<IAnimal>();
 		mockedList.add(animal);
 		
 		when(specie.getArea()).thenReturn(0);
@@ -39,8 +41,6 @@ public class ISpecieTest {
 	
 	@Test
 	public void testGetAnimals() {
-		LinkedList<IAnimal> mockedList = new LinkedList<IAnimal>();
-		mockedList.add(animal);
 		assertEquals(mockedList, specie.getAnimals());
 	}
 }
