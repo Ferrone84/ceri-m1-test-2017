@@ -16,25 +16,41 @@ public class IGameStateProviderTest {
 	private IGameStateProvider gameStateProvider;
 	
 	@Mock
-	private IGameState gameState;
+	private static IGameState gameState;
+	
+	public static IGameStateProvider getMock() {
+		IGameStateProvider gameStateProvider = mock(IGameStateProvider.class);
+
+		gameState = IGameStateTest.getMock();
+		when(gameStateProvider.get("")).thenReturn(null);
+		when(gameStateProvider.get("MySave")).thenReturn(gameState);
+		doThrow(IllegalArgumentException.class).when(gameStateProvider).get(null);
+		return gameStateProvider;
+	}
 
 	@Before
 	public void init() {
-		gameStateProvider = mock(IGameStateProvider.class);
-		gameState = mock(IGameState.class);
-		when(gameStateProvider.get("")).thenReturn(null);
-		when(gameStateProvider.get("MySave")).thenReturn(gameState);
+		gameStateProvider = getMock();
 	}
 	
 	@Test
 	public void testSave() {
-		//TODO comment tester ce truc ?
+		//TODO comment tester ce truc ? attendre de coder l'implémentation pck sinon LOL
 		gameStateProvider.save(gameState);
 	}
 	
 	@Test
 	public void testGet() {
-		assertEquals(null, gameStateProvider.get(""));
 		assertEquals(gameState, gameStateProvider.get("MySave"));
+	}
+	
+	@Test
+	public void testGetReturnNull() {
+		assertEquals(null, gameStateProvider.get(""));
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void testGetIsNull() {
+		gameStateProvider.get(null);
 	}
 }

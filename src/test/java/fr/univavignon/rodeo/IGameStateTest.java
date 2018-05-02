@@ -3,6 +3,8 @@ package fr.univavignon.rodeo;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -13,17 +15,28 @@ import fr.univavignon.rodeo.api.ISpecie;
 import fr.univavignon.rodeo.api.SpecieLevel;
 
 public class IGameStateTest {
+	
+	@Mock
+	private static IAnimal animal;
+	
+	@Mock
+	private static ISpecie specie;
 
 	@Mock
 	private IGameState gameState;
 	
-	@Mock
-	private ISpecie specie;
+	private static SpecieLevel noviceLevel, wranglerLevel, championLevel, masterLevel;
 	
-	@Mock
-	private IAnimal animal;
-	
-	private SpecieLevel noviceLevel, wranglerLevel, championLevel, masterLevel;
+	public static IGameState getMock() {
+		IGameState gameState = mock(IGameState.class);
+		when(gameState.getSpecieLevel(specie)).thenReturn(masterLevel);
+		when(gameState.getProgression()).thenReturn(0);
+		doThrow(IllegalStateException.class).when(gameState).exploreArea();
+		doThrow(IllegalArgumentException.class).when(gameState).catchAnimal(null);
+		doThrow(IllegalStateException.class).when(gameState).catchAnimal(animal);
+		doThrow(IllegalArgumentException.class).when(gameState).getSpecieLevel(null);
+		return gameState;
+	}
 
 	@Before
 	public void init() {
@@ -32,43 +45,56 @@ public class IGameStateTest {
 		championLevel = SpecieLevel.CHAMPION;
 		masterLevel = SpecieLevel.MASTER;
 		
-		gameState = mock(IGameState.class);
-		specie = mock(ISpecie.class);
-		animal = mock(IAnimal.class);
-		
-		when(gameState.getProgression()).thenReturn(0);
+		animal = IAnimalTest.getMock();
+		specie = ISpecieTest.getMock();
+		gameState = getMock();		
 	}
 	
-	@Test
+	@Test (expected=IllegalStateException.class)
 	public void testExploreArea() {
-		//TODO faire ça
+		gameState.exploreArea();
+	}
+	
+	@Test (expected=IllegalStateException.class)
+	public void testCatchAnimalNotExist() {
+		gameState.catchAnimal(animal);
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void testCatchAnimalIsNull() {
+		gameState.catchAnimal(null);
 	}
 	
 	@Test
-	public void testCatchAnimal() {
-		//TODO faire ça
+	public void testGetSpecieLevel() {
+		assertEquals(masterLevel, gameState.getSpecieLevel(specie));
+	}
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void testGetSpecieLevelIsNull() {
+		gameState.getSpecieLevel(null);
 	}
 	
 	@Test
-	public void testNoviceLevel() {
+	public void testGetSpecieNoviceLevel() {
 		when(gameState.getSpecieLevel(specie)).thenReturn(noviceLevel);
 		assertEquals(noviceLevel, gameState.getSpecieLevel(specie));
 	}
 	
 	@Test
-	public void testWranglerLevel() {
+	public void testGetSpecieWranglerLevel() {
 		when(gameState.getSpecieLevel(specie)).thenReturn(wranglerLevel);
 		assertEquals(wranglerLevel, gameState.getSpecieLevel(specie));
 	}
 	
 	@Test
-	public void testChampionLevel() {
+	public void testGetSpecieChampionLevel() {
 		when(gameState.getSpecieLevel(specie)).thenReturn(championLevel);
 		assertEquals(championLevel, gameState.getSpecieLevel(specie));
 	}
 	
 	@Test
-	public void testMasterLevel() {
+	public void testGetSpecieMasterLevel() {
 		when(gameState.getSpecieLevel(specie)).thenReturn(masterLevel);
 		assertEquals(masterLevel, gameState.getSpecieLevel(specie));
 	}

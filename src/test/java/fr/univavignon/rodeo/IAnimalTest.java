@@ -13,14 +13,19 @@ public class IAnimalTest {
 	
 	@Mock
 	private IAnimal animal;
-	
-	@Before
-	public void init() {
-		animal = mock(IAnimal.class);
+
+	public static IAnimal getMock() {
+		IAnimal animal = mock(IAnimal.class);
 		when(animal.getXP()).thenReturn(0);
 		when(animal.isSecret()).thenReturn(true);
 		when(animal.isEndangered()).thenReturn(true);
 		when(animal.isBoss()).thenReturn(true);
+		return animal;
+	}
+	
+	@Before
+	public void init() {
+		animal = getMock();
 	}
 	
 	@Test

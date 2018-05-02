@@ -3,7 +3,9 @@ package fr.univavignon.rodeo;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,23 +17,22 @@ import fr.univavignon.rodeo.api.ISpecie;
 public class ISpecieTest {
 
 	@Mock
-	private IAnimal animal;
-
-	@Mock
 	private ISpecie specie;
 	
-	private LinkedList<IAnimal> mockedList;
+	private static List<IAnimal> mockedList = IntStream.range(0,5)
+			  								  .mapToObj(i -> IAnimalTest.getMock())
+			  								  .collect(Collectors.toList());
 	
-	@Before
-	public void init() {		
-		animal = mock(IAnimal.class);
-		specie = mock(ISpecie.class);
-
-		mockedList = new LinkedList<IAnimal>();
-		mockedList.add(animal);
-		
+	public static ISpecie getMock() {
+		ISpecie specie = mock(ISpecie.class);
 		when(specie.getArea()).thenReturn(0);
 		when(specie.getAnimals()).thenReturn(mockedList);
+		return specie;
+	}
+	
+	@Before
+	public void init() {
+		specie = getMock();
 	}
 	
 	@Test
