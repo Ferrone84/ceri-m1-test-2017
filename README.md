@@ -8,6 +8,10 @@
 
 - [![Codacy Badge](https://api.codacy.com/project/badge/Grade/183ea5cbfd054fab96c9fee22457b9a4)](https://www.codacy.com/app/Ferrone84/ceri-m1-test-2017?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ferrone84/ceri-m1-test-2017&amp;utm_campaign=Badge_Grade)
 
+- [![codecov](https://codecov.io/gh/Ferrone84/ceri-m1-test-2017/branch/master/graph/badge.svg)](https://codecov.io/gh/Ferrone84/ceri-m1-test-2017)
+
+- [![CircleCI](https://circleci.com/gh/Ferrone84/ceri-m1-test-2017.svg?style=shield)](https://circleci.com/gh/Ferrone84/ceri-m1-test-2017)
+
 ## Resources
 
 ### Cours
