@@ -68,6 +68,7 @@ public class IGameStateTest {
 	@Test
 	public void testGetSpecieLevel() {
 		assertEquals(masterLevel, gameState.getSpecieLevel(specie));
+		assertEquals(600, gameState.getSpecieLevel(specie).getRequiredXP());
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
