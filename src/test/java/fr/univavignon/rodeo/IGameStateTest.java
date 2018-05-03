@@ -3,8 +3,6 @@ package fr.univavignon.rodeo;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.util.LinkedList;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
