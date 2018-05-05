@@ -2,14 +2,18 @@ package fr.univavignon.rodeo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import fr.univavignon.rodeo.api.Animal;
 import fr.univavignon.rodeo.api.GameState;
@@ -28,7 +32,7 @@ public class GameStateProviderTest extends IGameStateProviderTest {
 	@Test
 	public void testSave() {
 		assertNotNull(gameState);
-		gameStateProvider.save(gameState);
+		gameStateProvider.save(null);
 	}
 	
 	@Test
@@ -90,6 +94,18 @@ public class GameStateProviderTest extends IGameStateProviderTest {
 		}
 	}
 	
+	@Test //TODO impossible à throw ?
+	public void testSaveFileNotFoundException() {
+		assertNotNull(gameState);
+		gameStateProvider.save(gameState);
+	}
+	
+	@Test //TODO impossible à throw ?
+	public void testSaveEncodingException() {
+		assertNotNull(gameState);
+		gameStateProvider.save(gameState);
+	}
+	
 	@Test
 	public void testGet() {
 		gameStateProvider.save(gameState);
@@ -104,5 +120,15 @@ public class GameStateProviderTest extends IGameStateProviderTest {
 	@Test (expected=IllegalArgumentException.class)
 	public void testGetIsNull() {
 		gameStateProvider.get(null);
+	}
+	
+	@Test
+	public void testGetIOException() throws IOException {
+		GameState io = new GameState("ioexception");
+		assertNotNull(io);
+		gameStateProvider.save(io);
+		final RandomAccessFile raFile = new RandomAccessFile("resources/save_ioexception.txt", "rw");
+		raFile.getChannel().lock();
+		assertEquals(io, gameStateProvider.get("ioexception"));
 	}
 }

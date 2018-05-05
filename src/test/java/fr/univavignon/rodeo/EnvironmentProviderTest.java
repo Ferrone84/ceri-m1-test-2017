@@ -2,6 +2,7 @@ package fr.univavignon.rodeo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -77,6 +78,16 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 	@Test
 	public void testGetEnvironments() {
 		assertEquals(environments, environmentProvider.getEnvironments());
+		List<IEnvironment> env = Arrays.asList(
+			new Environment("Jungle", 2, Arrays.asList(
+				new Specie("Boar", 1, Arrays.asList(
+						new Animal("Boar1", 1, false, false, false),
+						new Animal("Boar2", 3, true, false, false),
+						new Animal("Boar3", 30, false, true, false)
+				))
+			))
+		);
+		assertNotEquals(env, environmentProvider.getEnvironments());
 	}
 	
 	@Test (expected=IllegalArgumentException.class)

@@ -35,9 +35,6 @@ public class Animal extends NamedObject implements IAnimal {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Animal))
-			return false;
-		
 		Animal newObject = (Animal) o;
 		
 		return (name.equals(newObject.getName()) 

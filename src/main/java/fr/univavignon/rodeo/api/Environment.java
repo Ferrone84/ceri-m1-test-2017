@@ -25,9 +25,6 @@ public class Environment extends NamedObject implements IEnvironment {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Environment))
-			return false;
-		
 		Environment newObject = (Environment) o;
 		List<ISpecie> speciesObject = newObject.getSpecies();
 		

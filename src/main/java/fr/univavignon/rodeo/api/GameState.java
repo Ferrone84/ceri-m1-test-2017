@@ -42,7 +42,7 @@ public class GameState extends NamedObject implements IGameState {
 			}
 		}
 		
-		if (allAnimalsOfCurrentAreaCaught && envProvider.stillAreaToExplore()) {
+		if (envProvider.stillAreaToExplore() && allAnimalsOfCurrentAreaCaught) {
 			envProvider.unlockNextEnvironment();
 			List<IEnvironment> environments = envProvider.getEnvironments();
 			
@@ -119,13 +119,16 @@ public class GameState extends NamedObject implements IGameState {
 	}
 	
 	private ISpecie getSpecie(IAnimal animal) {
+		ISpecie result = null;
 		for (Map.Entry<ISpecie, Integer> entry : speciesXp.entrySet()) {
 			for (IAnimal currentAnimal : entry.getKey().getAnimals()) {
-				if (currentAnimal.equals(animal))
-					return entry.getKey();
+				if (currentAnimal.equals(animal)) {
+					result = entry.getKey();
+					break;
+				}
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public int getAnimalsCaughtNumber() {
@@ -147,9 +150,6 @@ public class GameState extends NamedObject implements IGameState {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof GameState))
-			return false;
-		
 		GameState newObject = (GameState) o;
 		
 		return (progression == newObject.getProgression());

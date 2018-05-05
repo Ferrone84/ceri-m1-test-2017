@@ -25,20 +25,18 @@ public class Specie extends NamedObject implements ISpecie {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Specie))
-			return false;
-		
 		Specie newObject = (Specie) o;
 		List<IAnimal> animalsObject = newObject.getAnimals();
+		boolean result = true;
 		
 		if (name.equals(newObject.getName()) && area == newObject.getArea() && animals.size() == animalsObject.size()) {
 			for (int i=0; i < animals.size(); i++) {
 				if (((Animal)animals.get(i)).equals(animalsObject.get(i))) {
-					return false;
+					result = false;
 				}
 			}
 		}
 		
-		return true;
+		return result;
 	}
 }
