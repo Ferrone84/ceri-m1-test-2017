@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 //mais un peu la flemme de tout détailler, l'idée principale est la (je save le % de progression)
 public class GameStateProvider implements IGameStateProvider {
 	
-	private final String SAVEPATH = "resources/";
+	private final String SAVEPATH = "resources/save_";
 
 	@Override
 	public void save(IGameState gameState) {
@@ -20,7 +20,7 @@ public class GameStateProvider implements IGameStateProvider {
 			return;
 		}
 		
-		String saveFileName = SAVEPATH + "save_" + gameState.getName() + ".txt";
+		String saveFileName = SAVEPATH + gameState.getName() + ".txt";
 		try {
 			PrintWriter writer = new PrintWriter(saveFileName, "UTF-8");
 			writer.print(gameState.getProgression());
@@ -39,7 +39,7 @@ public class GameStateProvider implements IGameStateProvider {
 			throw new IllegalArgumentException("get(String name) -> null argument");
 		
 		GameState gameState = null;
-		String saveFileName = SAVEPATH + "save_" + name + ".txt";
+		String saveFileName = SAVEPATH + name + ".txt";
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(saveFileName))) {
 			gameState = new GameState(name);
@@ -48,20 +48,25 @@ public class GameStateProvider implements IGameStateProvider {
 
 		    while (line != null) {
 		        sb.append(line);
-		        sb.append(System.lineSeparator());
 		        line = br.readLine();
 		    }
-		    String[] lines = sb.toString().split("\n");
+		    String lines = sb.toString();
 		    
-		    int progression = Integer.parseInt(lines[0]);
+		    int progression = Integer.parseInt(lines);
 		    gameState.setProgression(progression);
 		    
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return gameState;
+	}
+	
+	public String getSavePath() {
+		return this.SAVEPATH;
 	}
 }

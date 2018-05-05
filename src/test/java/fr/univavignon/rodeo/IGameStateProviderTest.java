@@ -35,9 +35,8 @@ public class IGameStateProviderTest {
 	
 	@Test
 	public void testSave() {
-		//TODO comment tester ce truc ? attendre de coder l'implémentation pck sinon LOL
+		assertNotNull(gameState);
 		gameStateProvider.save(gameState);
-		assertTrue(true);
 	}
 	
 	@Test

@@ -43,6 +43,13 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 					new Animal("Le'Ion Chef", 5, true, false, false), 			//secret
 					new Animal("Nian Monster ", 30, false, true, false) 		//endangered
 				))
+			)),
+			new Environment("Jungle", 2, Arrays.asList( //pour tester
+				new Specie("Boar", 1, Arrays.asList(
+					new Animal("Boar1", 1, false, false, false), 		//normal
+					new Animal("Boar2", 3, true, false, false), 		//secret
+					new Animal("Boar3", 30, false, true, false) 		//endangered
+				))
 			))
 			/*,
 			new Environment("Jungle", 2, Arrays.asList(

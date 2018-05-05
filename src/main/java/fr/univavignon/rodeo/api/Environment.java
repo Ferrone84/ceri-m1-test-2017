@@ -2,21 +2,15 @@ package fr.univavignon.rodeo.api;
 
 import java.util.List;
 
-public class Environment implements IEnvironment {
+public class Environment extends NamedObject implements IEnvironment {
 
-	private String name;
 	private int areaNumber;
 	private List<ISpecie> species;
 	
 	public Environment(String name, int areaNumber, List<ISpecie> species) {
-		this.name = name;
+		super(name);
 		this.areaNumber = areaNumber;
 		this.species = species;
-	}
-	
-	@Override
-	public String getName() {
-		return name;
 	}
 
 	@Override
@@ -29,4 +23,21 @@ public class Environment implements IEnvironment {
 		return species;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Environment))
+			return false;
+		
+		Environment newObject = (Environment) o;
+		List<ISpecie> speciesObject = newObject.getSpecies();
+		
+		if(name.equals(newObject.getName()) && areaNumber == newObject.getAreas() && species.size() == speciesObject.size()) {
+			for (int i=0; i < species.size(); i++) {
+				if (((Specie)species.get(i)).equals(speciesObject.get(i)))
+					return false;
+			}
+		}
+		
+		return true;
+	}
 }

@@ -21,4 +21,24 @@ public class AnimalTest extends IAnimalTest {
 	public void testName() {
 		assertEquals("Test", animal.getName());
 	}
+	
+	@Test
+	public void testGetXp() {
+		assertEquals(0, animal.getXP());
+	}
+	
+	@Test
+	public void testIsSecret() {
+		assertTrue(animal.isSecret());
+	}
+	
+	@Test
+	public void testIsEndangered() {
+		assertTrue(animal.isEndangered());
+	}
+	
+	@Test
+	public void testIsBoss() {
+		assertTrue(animal.isBoss());
+	}
 }

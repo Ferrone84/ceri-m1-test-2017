@@ -23,27 +23,28 @@ public class IAnimalTest {
 		return animal;
 	}
 	
+	@Before
+	public void init() {
+		animal = getMock();
+	}
+	
 	@Test
 	public void testGetXp() {
-		animal = getMock();
 		assertEquals(0, animal.getXP());
 	}
 	
 	@Test
 	public void testIsSecret() {
-		animal = getMock();
 		assertTrue(animal.isSecret());
 	}
 	
 	@Test
 	public void testIsEndangered() {
-		animal = getMock();
 		assertTrue(animal.isEndangered());
 	}
 	
 	@Test
 	public void testIsBoss() {
-		animal = getMock();
 		assertTrue(animal.isBoss());
 	}
 }

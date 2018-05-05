@@ -41,7 +41,7 @@ public class IEnvironmentTest {
 	}
 	
 	@Test
-	public void testSpecies() {
+	public void testGetSpecies() {
 		assertEquals(species, environment.getSpecies());
 	}
 }

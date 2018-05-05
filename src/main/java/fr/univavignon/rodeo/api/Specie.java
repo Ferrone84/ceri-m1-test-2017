@@ -2,21 +2,15 @@ package fr.univavignon.rodeo.api;
 
 import java.util.List;
 
-public class Specie implements ISpecie {
+public class Specie extends NamedObject implements ISpecie {
 
-	private String name;
 	private int area;
 	private List<IAnimal> animals;
 	
 	public Specie(String name, int area, List<IAnimal> animals) {
-		this.name = name;
+		super(name);
 		this.area = area;
 		this.animals = animals;
-	}
-	
-	@Override
-	public String getName() {
-		return name;
 	}
 
 	@Override
@@ -28,5 +22,23 @@ public class Specie implements ISpecie {
 	public List<IAnimal> getAnimals() {
 		return animals;
 	}
-
+	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Specie))
+			return false;
+		
+		Specie newObject = (Specie) o;
+		List<IAnimal> animalsObject = newObject.getAnimals();
+		
+		if (name.equals(newObject.getName()) && area == newObject.getArea() && animals.size() == animalsObject.size()) {
+			for (int i=0; i < animals.size(); i++) {
+				if (((Animal)animals.get(i)).equals(animalsObject.get(i))) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
 }
