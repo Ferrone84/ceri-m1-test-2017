@@ -16,14 +16,13 @@ import fr.univavignon.rodeo.api.SpecieLevel;
 public class GameStateTest extends IGameStateTest {
 	
 	private GameState gameState;
-	private EnvironmentProvider environmentProvider;
 	private IAnimal animal;
 	private ISpecie specie;
 	
 	@Before
 	public void init() {
 		gameState = new GameState("TestGameState");
-		environmentProvider = gameState.getEnvironmentProvider();
+		EnvironmentProvider environmentProvider = gameState.getEnvironmentProvider();
 		animal = new Animal("Buff the Magic Dragon", 30, false, true, false);
 		specie = environmentProvider.getEnvironments().get(0).getSpecies().get(0); //Buffalo
 	}

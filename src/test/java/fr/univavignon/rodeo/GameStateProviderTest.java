@@ -2,18 +2,15 @@ package fr.univavignon.rodeo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.RandomAccessFile;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 import fr.univavignon.rodeo.api.Animal;
 import fr.univavignon.rodeo.api.GameState;

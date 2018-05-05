@@ -29,7 +29,7 @@ public class Specie extends NamedObject implements ISpecie {
 		List<IAnimal> animalsObject = newObject.getAnimals();
 		boolean result = true;
 		
-		if (name.equals(newObject.getName()) && area == newObject.getArea() && animals.size() == animalsObject.size()) {
+		if (animals.size() == animalsObject.size() && name.equals(newObject.getName()) && area == newObject.getArea()) {
 			for (int i=0; i < animals.size(); i++) {
 				if (((Animal)animals.get(i)).equals(animalsObject.get(i))) {
 					result = false;
