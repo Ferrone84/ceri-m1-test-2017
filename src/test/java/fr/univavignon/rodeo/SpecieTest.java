@@ -50,7 +50,7 @@ public class SpecieTest extends ISpecieTest {
 				new Animal("Diabuffalo", 3, true, false, false),
 				new Animal("Buff the Magic Dragon", 30, false, true, false)
 		);
-		specieTest = new Specie("Buffalo", 1, animals);
+		specieTest = new Specie("Buffalo", 1, animalsTest);
 		assertEquals(specie, specieTest);
 	}
 	
@@ -59,7 +59,7 @@ public class SpecieTest extends ISpecieTest {
 		animalsTest = Arrays.asList(
 				new Animal("Forest Buffalo", 1, false, false, false)
 		);
-		specieTest = new Specie("Buffalo", 1, animals);
+		specieTest = new Specie("Buffalo", 1, animalsTest);
 		assertNotEquals(specie, specieTest);
 	}
 	
@@ -70,7 +70,7 @@ public class SpecieTest extends ISpecieTest {
 				new Animal("Diabuffalo", 3, true, false, false),
 				new Animal("Buff the Magic Dragon", 30, false, true, false)
 		);
-		specieTest = new Specie("pasbon", 1, animals);
+		specieTest = new Specie("pasbon", 1, animalsTest);
 		assertNotEquals(specie, specieTest);
 	}
 	
@@ -81,7 +81,7 @@ public class SpecieTest extends ISpecieTest {
 				new Animal("Diabuffalo", 3, true, false, false),
 				new Animal("Buff the Magic Dragon", 30, false, true, false)
 		);
-		specieTest = new Specie("Buffalo", 42, animals);
+		specieTest = new Specie("Buffalo", 42, animalsTest);
 		assertNotEquals(specie, specieTest);
 	}
 	
@@ -92,7 +92,7 @@ public class SpecieTest extends ISpecieTest {
 				new Animal("PERORINE", 3, true, false, false),
 				new Animal("Buff the Magic Dragon", 30, true, true, false)
 		);
-		specieTest = new Specie("Buffalo", 1, animals);
+		specieTest = new Specie("Buffalo", 1, animalsTest);
 		assertNotEquals(specie, specieTest);
 	}
 }
