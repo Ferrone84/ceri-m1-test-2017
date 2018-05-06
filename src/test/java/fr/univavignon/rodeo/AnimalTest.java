@@ -41,4 +41,39 @@ public class AnimalTest extends IAnimalTest {
 	public void testIsBoss() {
 		assertTrue(animal.isBoss());
 	}
+	
+	@Test
+	public void testEquals() {
+		Animal animal1 = new Animal("animal", 0, false, false, false);
+		Animal animal2 = new Animal("animal", 0, false, false, false);
+		assertEquals(animal1, animal2);
+	}
+	
+	@Test
+	public void testNotEquals() {
+		Animal animal1 = new Animal("animal1", 0, false, false, false);
+		Animal animal2 = new Animal("animal2", 1, true, true, true);
+		assertEquals(animal1, animal2);
+	}
+	
+	@Test
+	public void testNotEquals2() {
+		Animal animal1 = new Animal("animal", 0, false, false, false);
+		Animal animal2 = new Animal("animal", 1, true, true, true);
+		assertEquals(animal1, animal2);
+	}
+	
+	@Test
+	public void testNotEquals3() {
+		Animal animal1 = new Animal("animal", 0, false, false, false);
+		Animal animal2 = new Animal("animal", 0, false, true, true);
+		assertEquals(animal1, animal2);
+	}
+	
+	@Test
+	public void testNotEquals4() {
+		Animal animal1 = new Animal("animal", 0, false, false, false);
+		Animal animal2 = new Animal("animal", 0, false, false, true);
+		assertEquals(animal1, animal2);
+	}
 }
