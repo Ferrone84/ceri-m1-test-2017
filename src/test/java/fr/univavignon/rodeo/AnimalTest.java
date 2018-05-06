@@ -74,6 +74,13 @@ public class AnimalTest extends IAnimalTest {
 	@Test
 	public void testNotEquals4() {
 		Animal animal1 = new Animal("animal", 0, false, false, false);
+		Animal animal2 = new Animal("animal", 0, true, true, true);
+		assertNotEquals(animal1, animal2);
+	}
+	
+	@Test
+	public void testNotEquals5() {
+		Animal animal1 = new Animal("animal", 0, false, false, false);
 		Animal animal2 = new Animal("animal", 0, false, false, true);
 		assertNotEquals(animal1, animal2);
 	}
