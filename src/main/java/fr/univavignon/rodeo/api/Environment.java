@@ -28,11 +28,14 @@ public class Environment extends NamedObject implements IEnvironment {
 		Environment newObject = (Environment) o;
 		List<ISpecie> speciesObject = newObject.getSpecies();
 		
-		if(name.equals(newObject.getName()) && areaNumber == newObject.getAreas() && species.size() == speciesObject.size()) {
+		if (name.equals(newObject.getName()) && areaNumber == newObject.getAreas() && species.size() == speciesObject.size()) {
 			for (int i=0; i < species.size(); i++) {
-				if (((Specie)species.get(i)).equals(speciesObject.get(i)))
+				if (!((Specie)species.get(i)).equals(speciesObject.get(i)))
 					return false;
 			}
+		}
+		else {
+			return false;
 		}
 		
 		return true;
